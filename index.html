@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bogor News Daily Update</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ99eN1eF362L7N/5FhY8t5k5G/9A5K5J5S5S5T6O6S5S6V5Y5C5S6V5Y5V6W5S" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px -6px #222;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .social-btn {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .social-btn:hover {
+            background-color: #fff;
+            border-color: #fff;
+            color: #000;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1495020689067-95de1e7bdf07?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="Gemini_Generated_Image_g2nwx1g2nwx1g2nw.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                InBogorNewsUpdate
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="category-dropdown-link">
+                            Kategori
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-category="general">Umum</a></li>
+                            <li><a class="dropdown-item" href="#" data-category="business">Bisnis</a></li>
+                            <li><a class="dropdown-item" href="#" data-category="sports">Olahraga</a></li>
+                            <li><a class="dropdown-item" href="#" data-category="science">Sains</a></li>
+                            <li><a class="dropdown-item" href="#" data-category="health">Kesehatan</a></li>
+                            <li><a class="dropdown-item" href="#" data-category="entertainment">Hiburan</a></li>
+                            <li><a class="dropdown-item" href="#" data-category="technology">Teknologi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tentang Kami</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Cari berita..." aria-label="Search" id="search-input">
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Jelajahi Dunia Berita</h1>
+            <p class="lead mt-3">Temukan berita terkini dari berbagai kategori, langsung di genggaman Anda.</p>
+        </div>
+    </header>
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Berita <span id="category-title">Terkini</span></h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="article-container">
+            </div>
+        <div id="no-results-message" class="text-center d-none">
+            <p>Maaf, tidak ada berita yang ditemukan.</p>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <h5>Situs Berita</h5>
+                    <p class="mb-0">&copy; 2024 Semua Hak Cipta Dilindungi.</p>
+                </div>
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <h5>Hubungi Kami</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Email: info@situsberita.com</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Telepon: +62 812-3456-7890</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <h5>Ikuti Kami</h5>
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f fa-2x"></i>Facebook</a>
+                    <a href="#" class="social-btn"><i class="fab fa-twitter fa-2x"></i>Twitter</a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram fa-2x"></i>Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // News API
+        const key = 'b42c036d5c88427e8efda293efccd1e4'; // Ganti dengan API key Anda
+        let articlesData = []; // Variabel global untuk menyimpan data artikel
+
+        // Fungsi untuk mengambil berita berdasarkan kategori
+        function fetchNewsByCategory(category) {
+            const api = `
+https://newsapi.org/v2/everything?q=${category}&sortBy=popularity&apiKey=${key}`;
+            
+            // Tampilkan pesan loading
+            const container = document.getElementById('article-container');
+            container.innerHTML = `<p class="text-center text-muted">Memuat berita...</p>`;
+
+            // Ambil data
+            fetch(api)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    articlesData = data.articles;
+                    displayArticles(articlesData);
+                    document.getElementById('search-input').value = ''; // Kosongkan input pencarian
+                })
+                .catch(error => {
+                    container.innerHTML = `<p class="text-danger text-center">Gagal memuat artikel: ${error.message}</p>`;
+                    console.error('Ada masalah saat mengambil data:', error);
+                });
+        }
+
+        // Fungsi untuk menampilkan artikel
+        function displayArticles(data) {
+            const container = document.getElementById('article-container');
+            container.innerHTML = '';
+            
+            const noResults = document.getElementById('no-results-message');
+            const filteredArticles = data.slice(0, 9); // Tampilkan maksimal 9 kartu
+            
+            if (filteredArticles.length > 0) {
+                noResults.classList.add('d-none');
+                filteredArticles.forEach(article => {
+                    const imageUrl = article.urlToImage || 'https://via.placeholder.com/400x200?text=Image+Not+Available';
+                    const description = article.description || 'Deskripsi tidak tersedia.';
+                    const date = new Date(article.publishedAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                    const cardHtml = `
+                        <div class="col article-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="${imageUrl}" class="card-img-top" alt="${article.title}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">${article.title}</h5>
+                                    <p class="card-subtitle mb-2 text-muted">${date}</p>
+                                    <p class="card-text">${description.substring(0, 100)}...</p>
+                                    <a href="${article.url}" target="_blank" class="btn btn-primary mt-auto">Baca Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHtml;
+                });
+            } else {
+                noResults.classList.remove('d-none');
+            }
+        }
+
+        // Fungsi untuk pencarian real-time
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = articlesData.filter(article => 
+                article.title.toLowerCase().includes(searchTerm) || 
+                (article.description && article.description.toLowerCase().includes(searchTerm))
+            );
+            displayArticles(filtered);
+        });
+
+        // Event listener untuk dropdown kategori
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = e.target.getAttribute('data-category');
+                const categoryTitle = e.target.textContent;
+
+                // Mengubah judul utama dan teks dropdown
+                document.getElementById('category-title').textContent = categoryTitle;
+                document.getElementById('category-dropdown-link').textContent = categoryTitle;
+
+                fetchNewsByCategory(category);
+            });
+        });
+
+        // Ambil berita saat halaman pertama kali dimuat (kategori default: business)
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchNewsByCategory('business');
+            document.getElementById('category-title').textContent = "Bisnis";
+            document.getElementById('category-dropdown-link').textContent = "Bisnis";
+        });
+    </script>
+</body>
+</html>
