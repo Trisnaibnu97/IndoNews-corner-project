@@ -234,14 +234,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         // News API
-        const key = 'b42c036d5c88427e8efda293efccd1e4'; // Ganti dengan API key Anda
-        let articlesData = []; // Variabel global untuk menyimpan data artikel
+        //const key = 'b42c036d5c88427e8efda293efccd1e4'; // Ganti dengan API key Anda
+        //let articlesData = []; // Variabel global untuk menyimpan data artikel
 
         // Fungsi untuk mengambil berita berdasarkan kategori
         function fetchNewsByCategory(category) {
             // Menggunakan query yang lebih spesifik untuk hasil yang lebih relevan
-            const query = category === 'general' ? 'indonesia news' : `${category} indonesia`;
-            const api = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&language=en&pageSize=12&apiKey=${key}`;
+            const proxyUrl = `/api/news?category=${category}`;
+            const api = proxyUrl; // Endpoint API dengan proxy
             
             const container = document.getElementById('article-container');
             container.innerHTML = `<div class="col-12"><p class="text-center text-muted"><i class="fas fa-spinner fa-spin me-2"></i>Memuat berita kategori **${category}**...</p></div>`;
