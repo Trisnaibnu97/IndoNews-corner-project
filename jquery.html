@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Jquery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ99eN1eF362L7N/5FhY8t5k5G/9A5K5J5S5S5T6O6S5S6V5Y5C5S6V5Y5V6W5S" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h1>HAHA</h1>
+    <button id="btn-modal-id" class="btn btn-primary btn-modal-class">Get Data</button>
+
+    <script>
+        $(document).ready(function(){
+            $('#btn-modal-id').click(function(){
+                alert("Tombol diklik pakai ID!");
+            })
+            $('.btn-modal-class').click(function(){
+                alert("Tombol diklik pakai class!");
+            });
+            console.log("JQuery is ready!");
+        });
+    </script>
+</body>
+</html>
